@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mir3_generic_call" name="Mir3 Generic Call" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Make a generic call to Mir3</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="error_handling" label="Error Handling" required="true"
+          tooltip="Determine what to return if an error is encountered."
+          menu="Error Message,Raise Error">Error Message</parameter>
+        <parameter id="output_type" label="Output Type" required="false"
+          tooltip="The output type to return from a successful call."
+          menu="JSON,XML">JSON</parameter>
+        <parameter id="xml" label="XML structure" required="true"
+            tooltip="XML body to make the request.  Must be wrapped in a root element."/>
+        <parameter id="action" label="Action" required="true"
+            tooltip="The action to call in snake case. ex: get_notification_reports_op - Check wsdl for options."/>
+    </parameters>
+    <handler name="mir3_generic_call" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="endpoint">&lt;%= @info['endpoint'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ?
+                @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
+            <parameter name="output_type">&lt;%= @parameters.has_key?("output_type") ?
+                @parameters['output_type'] : "JSON" %&gt;</parameter>
+            <parameter name="xml">&lt;%= @parameters['xml'] %&gt;</parameter>
+            <parameter name="action">&lt;%= @parameters['action'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Handler Error Message"/>
+        <result name="output"/>
+    </results>
+</taskDefinition>

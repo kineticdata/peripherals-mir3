@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mir3_notification_search" name="Mir3 Notification Search" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Searches for Notification Reports.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="notification_title" label="Notification Title" required="false"
+            tooltip=""/>
+        <parameter id="message" label="Message" required="false"
+            tooltip=""/>
+        <parameter id="response" label="Response" required="false"
+            tooltip=""/>
+        <parameter id="call_bridge" label="Call Bridge" required="false"
+            tooltip=""/>
+        <parameter id="first_name" label="First Name" required="false"
+            tooltip=""/>
+        <parameter id="last_name" label="Last Name" required="false"
+            tooltip=""/>
+        <parameter id="leave_message" label="Leave Message" required="false"
+            tooltip=""/>
+        <parameter id="validate_recipient" label="Validate Recipient" required="false"
+            tooltip=""/>
+        <parameter id="verify_pin" label="Verify Pin" required="false"
+            tooltip=""/>
+        <parameter id="category" label="Category" required="false"
+            tooltip=""/>
+        <parameter id="priority" label="Priority" required="false"
+            tooltip=""/>
+        <parameter id="severity" label="Severity" required="false"
+            tooltip=""/>
+    </parameters>
+    <handler name="mir3_notification_search" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="notification_title">&lt;%= @parameters['notification_title'] %&gt;</parameter>
+            <parameter name="message">&lt;%= @parameters['message'] %&gt;</parameter>
+            <parameter name="response">&lt;%= @parameters['response'] %&gt;</parameter>
+            <parameter name="call_bridge">&lt;%= @parameters['call_bridge'] %&gt;</parameter>
+            <parameter name="first_name">&lt;%= @parameters['first_name'] %&gt;</parameter>
+            <parameter name="last_name">&lt;%= @parameters['last_name'] %&gt;</parameter>
+            <parameter name="leave_message">&lt;%= @parameters['leave_message'] %&gt;</parameter>
+            <parameter name="validate_recipient">&lt;%= @parameters['validate_recipient'] %&gt;</parameter>
+            <parameter name="verify_pin">&lt;%= @parameters['verify_pin'] %&gt;</parameter>
+            <parameter name="category">&lt;%= @parameters['category'] %&gt;</parameter>
+            <parameter name="priority">&lt;%= @parameters['priority'] %&gt;</parameter>
+            <parameter name="severity">&lt;%= @parameters['severity'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Match Count"/>
+        <result name="Return Count"/>
+        <result name="Notification Details JSON"/>
+    </results>
+</taskDefinition>

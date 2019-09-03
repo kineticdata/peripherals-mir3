@@ -1,0 +1,44 @@
+== Mir3 Notification Send
+Sends a new notification.
+
+=== Parameters
+[Title]
+  Notification title.
+[Description]
+  A notification description (that isn't visible to normal recipients).
+[Notification Method]
+  What type of notification method to use (Broadcast, First Response, Callout, or Bulletin Board).
+[Message]
+  Message to send to the recipients.
+[Recipient Usernames (CSV)]
+  A comma separated list of usernames that will recieve the notification.
+[Response Options (CSV)]
+  A comma separated list of response options that will be sent to the recipients.
+[Broadcast Duration (Mins)]
+  The duration of the Broadcast or Bulletin Board notification in minutes.
+[Callout Success Total]
+  For a callout, the amount of people that need to response to consider the notification a success.
+
+=== Results
+[Id]
+  Id of the newly created notification report
+
+==== Sample Configuration
+Title:                      Sample Notification
+Description:                A description that recipients can't see
+Notification Method:        Broadcast
+Message:                    This is a sample broadcast notification
+Recipient Usernames (CSV):  marymanager.acme,dondemo.acme
+Response Options (CSV):     Option 1,Option 2
+Broadcast Duration (Mins):  60
+Callout Success Total:
+
+=== Detailed Description
+Using Mir3's SOAP API, an API call is made to send a new simple notification that is built using the
+inputted properties. The SOAP request body is created based on what type of notification method is
+chosen (Broadcast, First Response, Callout, or Bulletin Board) and is then sent to the Users
+associated with the usernames from the comma separated recipient list. The current options available
+just represent the minimal message that can be sent and much more can be done with the Mir3 API if
+the handler is updated/forked to use these extra capabilities. On a successful call, a Notification
+Report Id will be returned which can be used to check the notification status. This handler is
+currently using version 4.14 of the Mir3 API.

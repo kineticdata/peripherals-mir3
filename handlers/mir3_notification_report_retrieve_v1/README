@@ -1,0 +1,41 @@
+== Mir3 Notification Report Retrieve
+Retrieves a Notification Report when given a corresponding Notification Id.
+
+=== Parameters
+[Notification Id]
+  The Id of the notification to retrieve the report for.
+
+=== Results
+[Id]
+[Title]
+[Message]
+[Type]
+[Time Sent]
+[Time Closed]
+[Priority]
+[Status]
+[Contact Attempts]
+[Leave Message]
+[Paused]
+[Closed Cause]
+[Initiator Name]
+[Initiator User Id]
+[Initiator Username]
+[Total Response Count]
+[Total Recipient Count]
+[Total Contacted Count]
+[Total Devices Contacted]
+[Total Phone Seconds]
+[Response Options JSON]
+
+==== Sample Configuration
+Notification Id:                 03fa9eb2-0003-3000-80c0-fceb55463ffe
+
+=== Detailed Description
+Using Mir3's SOAP API, an API call is made using a notification id to retrieve a single notification
+report that matches the inputted id. The SOAP request body is then created with the authentication
+values and the notification id and passed to the getNotificationReportsOp SOAP Action. If successful,
+the XML results will contain simple string representations of the fields that the Mir3 API returns.
+The only exception to this is the Response Options JSON field, which is a JSON representation of the
+XML that is returned with the User response statistics for the returned notification. This handler
+is currently using version 4.14 of the Mir3 API.

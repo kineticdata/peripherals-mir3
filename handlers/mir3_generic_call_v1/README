@@ -1,0 +1,32 @@
+== Mir3 Generic Call
+Make a generic request to the Mir3 SOAP API. 
+
+=== Parameters
+[Error Message]
+  Determine what to return if an error is encountered.
+[Output Type]
+  The output type to return from a successful call.
+[Action]
+  The action to call in snake case. ex: get_notification_reports_op - Check wsdl for options.
+[XML]
+  XML body to make the request.  The root element.
+
+==== Sample Configuration
+Error Handling:   Error Message
+Action:           get_notification_reports_op,
+XML:              <getNotificationReports>
+                    <apiVersion>4.14</apiVersion>
+                    <notificationReportUUID>04947c8b-0003-3000-80c0-fceb55463ffe</notificationReportUUID>
+                  </getNotificationReports>
+
+
+=== Results
+[Handler Error Message]
+  Error message if an error was encountered and Error Handling is set to "Error Message".
+[Output]
+  Result of the soap call as JSON or XML.
+
+=== Detailed Description
+Using Mir3's SOAP API, an API call is made to the provided action. The body must be provide for the
+SOAP request. The authentication values are added to the body of the reqeust. If successful the Results
+can be returned in JSON or XML format. This handler is currently using version 4.14 of the Mir3 API.

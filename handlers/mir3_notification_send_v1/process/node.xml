@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mir3_notification_send" name="Mir3 Notification Send" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Sends a new notification.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="title" label="Title" required="true"
+            tooltip="Notification title."/>
+        <parameter id="description" label="Description" required="false"
+            tooltip="A notification description (that isn't visible to normal recipients)." />
+        <parameter id="method" label="Notification Method" required="true"
+            tooltip="What type of notification method to use."
+            menu="Broadcast,First Response,Callout,Bulletin Board" />
+        <parameter id="message" label="Message" required="true"
+            tooltip="Message to send to the recipients." />
+        <parameter id="recipients" label="Recipient Usernames (CSV)" required="true"
+            tooltip="A comma separated list of usernames that will recieve the notification." />
+        <parameter id="response_options" label="Response Options (CSV)" required="false"
+            tooltip="A comma separated list of response options that will be sent to the recipients." />
+        <parameter id="broadcast_duration" label="Broadcast Duration (Mins)" required="false"
+            tooltip="The duration of the Broadcast or Bulletin Board notification in minutes." />
+        <parameter id="callout_success_total" label="Callout Success Total" required="false"
+            tooltip="For a callout, the amount of people that need to response to consider the notification a success." />
+    </parameters>
+    <handler name="mir3_notification_send" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="title">&lt;%= @parameters['title'] %&gt;</parameter>
+            <parameter name="description">&lt;%= @parameters['description'] %&gt;</parameter>
+            <parameter name="method">&lt;%= @parameters['method'] %&gt;</parameter>
+            <parameter name="message">&lt;%= @parameters['message'] %&gt;</parameter>
+            <parameter name="recipients">&lt;%= @parameters['recipients'] %&gt;</parameter>
+            <parameter name="response_options">&lt;%= @parameters['response_options'] %&gt;</parameter>
+            <parameter name="broadcast_duration">&lt;%= @parameters['broadcast_duration'] %&gt;</parameter>
+            <parameter name="callout_success_total">&lt;%= @parameters['callout_success_total'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Id"/>
+    </results>
+</taskDefinition>

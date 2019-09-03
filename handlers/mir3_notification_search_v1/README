@@ -1,0 +1,42 @@
+== Mir3 Notification Search
+Searches for notification reports.
+
+=== Parameters
+[Notification Title]
+[Message]
+[Response]
+[Call Bridge]
+[First Name]
+[Last Name]
+[Leave Message]
+[Validate Recipient]
+[Verify Pin]
+[Category]
+[Priority]
+[Severity]
+
+=== Results
+[Match Count]
+  The amount of notifications that were matched
+[Return Count]
+  The amount of notifications that were returned (can return a max of 1000 no matter how many were
+  matched)
+[Notification Details JSON]
+  A JSON representation of the details for the notifications that were returned.
+
+==== Sample Configuration
+Notification Title:
+Message:
+Response:
+Call Bridge:
+First Name:
+Last Name:
+Leave Message:
+Validate Recipient:
+Verify Pin:
+Category:
+Priority:
+Severity:
+
+=== Detailed Description
+Using Mir3's SOAP API, an API call is made to search for a notification.
