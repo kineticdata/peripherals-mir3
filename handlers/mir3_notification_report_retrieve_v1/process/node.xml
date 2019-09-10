@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mir3_notification_report_retrieve" name="Mir3 Notification Report Retrieve" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Retrieves a Notification Report when given a corresponding Notification Id</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="notification_id" label="Notification UUID" required="true"
+            tooltip="The UUID of the notification to retrieve the report for."/>
+    </parameters>
+    <handler name="mir3_notification_report_retrieve" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="notification_id">&lt;%= @parameters['notification_id'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Id"/>
+        <result name="Title"/>
+        <result name="Message"/>
+        <result name="Type"/>
+        <result name="Time Sent"/>
+        <result name="Time Closed"/>
+        <result name="Priority"/>
+        <result name="Status"/>
+        <result name="Contact Attempts"/>
+        <result name="Leave Message"/>
+        <result name="Paused"/>
+        <result name="Closed Cause"/>
+        <result name="Initiator Name"/>
+        <result name="Initiator User Id"/>
+        <result name="Initiator Username"/>
+        <result name="Total Response Count"/>
+        <result name="Total Recipient Count"/>
+        <result name="Total Contacted Count"/>
+        <result name="Total Devices Contacted"/>
+        <result name="Total Phone Seconds"/>
+        <result name="Response Options JSON"/>
+    </results>
+</taskDefinition>

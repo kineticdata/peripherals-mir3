@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="mir3_notification_report_recipients_retrieve" name="Mir3 Notification Report Recipients Retrieve" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Retrieves notification report recipients when given a notification id.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="notification_id" label="Notification UUID" required="true"
+            tooltip="The Id of the notification to retrieve the recipients for."/>
+        <parameter id="query_type" label="Query Type" required="true"
+            tooltip="Filter the recipient report with one of the provided values."
+            menu="All Contacted,All Responded,No Response,Response Option,All Recipients,Not Contacted,Single Recipient" />
+        <parameter id="response_option_id" label="Response Option UUID" required="true"
+            tooltip="If the query type 'Response Option' is selected, the Id of the response option to query on."
+            dependsOnId="query_type" dependsOnValue="Response Option"/>
+        <parameter id="recipient_id" label="Recipient UUID" required="true"
+            tooltip="If query type 'Single Recipient' is selected, the Id of a recipient to query."
+            dependsOnId="query_type" dependsOnValue="Single Recipient"/>
+    </parameters>
+    <handler name="mir3_notification_report_recipients_retrieve" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="notification_id">&lt;%= @parameters['notification_id'] %&gt;</parameter>
+            <parameter name="query_type">&lt;%= @parameters['query_type'] %&gt;</parameter>
+            <parameter name="response_option_id">&lt;%= @parameters['response_option_id'] %&gt;</parameter>
+            <parameter name="recipient_id">&lt;%= @parameters['recipient_id'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Total Calls"/>
+        <result name="Total Emails"/>
+        <result name="Total Faxes"/>
+        <result name="Total SMS"/>
+        <result name="Total Pages"/>
+        <result name="Total Mobile App Devices"/>
+        <result name="Total Recipients"/>
+        <result name="Answering Machine Connected Count"/>
+        <result name="Answering Machine Disconnected Count"/>
+        <result name="Answering Machine Undelievered Count"/>
+        <result name="Busy Count"/>
+        <result name="Network Busy Count"/>
+        <result name="Hang Up Count"/>
+        <result name="Hang Up Complete Count"/>
+        <result name="Invalid Response Count"/>
+        <result name="Left Message Count"/>
+        <result name="No Answer Count"/>
+        <result name="Not At This Location Count"/>
+        <result name="Response Count"/>
+        <result name="Wrong Address Count"/>
+        <result name="Tdd Complete Count"/>
+        <result name="Tdd Partial Count"/>
+        <result name="Tdd Undelievered Count"/>
+        <result name="Other Count"/>
+        <result name="Blackberry Count"/>
+        <result name="Recipients JSON"/>
+    </results>
+</taskDefinition>

@@ -1,0 +1,74 @@
+== Mir3 Notification Report Retrieve
+Retrieves notification report recipients when given a notification id.
+
+=== Parameters
+[Notification UUID]
+  The Id of the notification to retrieve the report for.
+[Query Type]
+  Filter the recipient report with one of the provided values.
+[Response Option UUID]
+  If the query type 'Response Option' is selected, the Id of the response option to query on.
+[Recipient UUID]
+  If query type 'Single Recipient' is selected, the Id of a recipient to query.
+
+=== Results
+[Total Calls]
+[Total Emails]
+[Total Faxes]
+[Total SMS]
+[Total Pages]
+[Total Mobile App Devices]
+[Total Recipients]
+[Answering Machine Connected Count]
+[Answering Machine Disconnected Count]
+[Answering Machine Undelievered Count]
+[Busy Count]
+[Network Busy Count]
+[Hang Up Count]
+[Hang Up Complete Count]
+[Invalid Response Count]
+[Left Message Count]
+[No Answer Count]
+[Not At This Location Count]
+[Response Count]
+[Wrong Address Count]
+[Tdd Complete Count]
+[Tdd Partial Count]
+[Tdd Undelievered Count]
+[Other Count]
+[Blackberry Count]
+[Recipients JSON]
+
+==== Sample Configuration
+Notification UUID:                 03fa9eb2-0003-3000-80c0-fceb55463ffe
+Query Type:                        Single Recipient
+Response Option UUID:
+Recipient UUID:                    020d5df8-0007-3000-80c0-fceb55463ffe
+
+=== Detailed Description
+Using Mir3's SOAP API, an API call is made using a notification id and a query type to retrieve the
+receipients of a single notification. The SOAP request body is created with the authentication
+values, the notification id, and whatever query information is needed and is then passed to the
+getNotificationReportRecipientsOp SOAP Action. If successful, the XML results will contain simple
+string representations of the fields that the Mir3 API returns. The only exception to this is the
+Recipients JSON field, which is a JSON representation of the XML that is returned with the User
+response statistics for the returned notification. This handler is currently using version 4.14 of
+the Mir3 API.
+
+=== Query Types
+- All Contacted: ALL_CONTACTED
+  - Matches all Recipients who have been contacted.
+- All Responded: ALL_RESPONDED
+  - Matches all Recipients who have responded.
+- No Response: NO_RESPONSE
+  - All Recipients who have been contacted but have not responded.
+- Response Option: RESPONSE_OPTION
+  - All Recipients who have selected a particular response option.
+- All Recipients: ALL_RECIPIENTS
+  - Matches all Recipients, including those who have not yet been contacted.
+- Not Contacted: NOT_CONTACTED
+  - Matches all Recipients who have not yet been contacted.
+- Single Recipient: RECIPIENT
+  - Matches a single Recipient, identified by RecipientReportId.
+- All Recipients: ALL_RECIPIENTS
+  - Matches all Recipients, including those who have not yet
