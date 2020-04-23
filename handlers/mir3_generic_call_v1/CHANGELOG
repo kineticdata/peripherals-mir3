@@ -1,2 +1,6 @@
 Mir3 Generic Call V1 (2018-02-08)
 * Initial version.  See README for details.
+
+Mir3 Generic Call V1.1 (2020-04-22)
+* Updated a specific file in a dependency to handle a very specific situation.
+  See handler/vendor/GEM_MODIFICATIONS.txt for additional details.
