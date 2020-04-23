@@ -3,6 +3,12 @@ module Savon
 
     def self.present?(http, xml = nil)
       xml ||= http.body
+
+      # 2020-04-20: Added line 11 to handle situations where the returned SOAP
+      # response included matching fault data in a CDATA element. CDATA should
+      # not be evaluate for these errors
+      xml.slice!(/<\!\[CDATA(?:(?!<\!\[CDATA).)*?\]\]>/m)
+      
       fault_node  = xml.include?("Fault>")
       soap1_fault = xml.include?("faultcode>") && xml.include?("faultstring>")
       soap2_fault = xml.include?("Code>") && xml.include?("Reason>")

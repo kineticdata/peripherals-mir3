@@ -1,4 +1,12 @@
 The following modifications were made to the vendor libraries in order to make
 them compatible with the Kinetic Task process:
- * Added the VERSION constant to the Builder class in the 
+ * Added the VERSION constant to the Builder class in the
    lib\builder\xmlbase.rb file at line 6.
+
+ 2020-04-20:
+ *  Savon-2.12.0/lib/savon/soap_fault.rb
+    Added line 10 to handle situations where the returned SOAP response included
+    matching fault data in a CDATA element. CDATA should not be evaluated for
+    these errors
+
+    xml.slice!(/<!\[CDATA(?:(?!<!\[CDATA).)*?\]\]>/m)
